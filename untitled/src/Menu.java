@@ -17,19 +17,22 @@ public class Menu implements ActionListener, WindowListener{
     }
 
     public void Main(){
-        /*MainGUI menu = new MainGUI();
+        MainGUI menu = new MainGUI();
         menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        menu.setSize(420,275);*/
+        menu.setSize(420,275);
         novoProjetoGUI novoGUI = new novoProjetoGUI();
         novoGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         novoGUI.setSize(450, 250);
-        novoGUI.setVisible(true);
+        menu.setVisible(true);
 
-
-        /*menu.btnCriaProjeto.addActionListener(e->{
+        novoGUI.btnVoltar.addActionListener(e->{
+            novoGUI.setVisible(false);
+            menu.setVisible(true);
+        });
+        menu.btnCriaProjeto.addActionListener(e->{
             menu.setVisible(false);
             novoGUI.setVisible(true);
-        });*/
+        });
 
 
     }
