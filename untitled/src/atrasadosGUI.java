@@ -9,5 +9,6 @@ public class atrasadosGUI extends JFrame {
         for(Projeto proj : projetos){
             listModel.addElement(proj.getNome());
         }
+        listProjeto.setModel(listModel);
     }
 }

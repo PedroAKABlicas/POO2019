@@ -21,6 +21,29 @@ public class Data implements Serializable {
         return mes;
     }
 
+    public Boolean comparator(Data datai, Data dataf){
+        if(dataf.ano>datai.ano){
+            return true;
+        }else{
+            if(datai.ano==dataf.ano){
+                if(dataf.mes>datai.mes){
+                    return true;
+                }else{
+                    if(dataf.mes==datai.mes){
+                        if(dataf.dia>datai.dia){
+                            return true;
+                        }
+                        else{
+                            return false;
+                        }
+                    }
+                }
+                return false;
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString() {
         return super.toString();
