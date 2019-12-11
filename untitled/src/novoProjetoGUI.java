@@ -1,11 +1,13 @@
 import javax.swing.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
 
 public class novoProjetoGUI extends JFrame {
     private JLabel labelNome, labelAcronimo, labelDuracao, labelDataI, labelDataF;
     private JTextField txtNome, txtAcronimo, txtDuracao, txtDataI, txtDataF;
     protected JButton btnCria, btnVoltar;
+    ArrayList<Projeto> projetos = new ArrayList<>();
     Projeto proj;
     public novoProjetoGUI() {
         setLayout(null);
@@ -55,6 +57,9 @@ public class novoProjetoGUI extends JFrame {
             data = txtDataF.getText().split("/");
             Data dataF = new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
             proj = new Projeto(txtNome.getText(), txtAcronimo.getText(), dataI, dataF, Integer.parseInt(txtDuracao.getText()));
+            projetos.add(proj);
+            Ficheiro ficheiro = new Ficheiro();
+            ficheiro.WriteProjetoToFile(projetos);
         });
         txtDuracao.addFocusListener(new FocusListener() {
             public void focusGained(FocusEvent e) {

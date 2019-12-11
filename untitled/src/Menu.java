@@ -17,9 +17,16 @@ public class Menu implements ActionListener, WindowListener{
     }
 
     public void Main(){
+        Ficheiro projs = new Ficheiro();
+        projs.ReadProjFromFile();
+        try{
+            listaProjeto=projs.ReadProjFromFile();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
         MainGUI menu = new MainGUI();
         menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        menu.setSize(420,275);
+        menu.setSize(420,300);
         novoProjetoGUI novoGUI = new novoProjetoGUI();
         novoGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         novoGUI.setSize(450, 250);
@@ -28,6 +35,7 @@ public class Menu implements ActionListener, WindowListener{
         novoGUI.btnVoltar.addActionListener(e->{
             novoGUI.setVisible(false);
             menu.setVisible(true);
+
         });
         menu.btnCriaProjeto.addActionListener(e->{
             menu.setVisible(false);

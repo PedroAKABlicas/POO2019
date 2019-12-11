@@ -41,9 +41,9 @@ public class Ficheiro {
         }
     }
 
-    public ArrayList<Pessoa> ReadPessoaFromFile(String path){
+    public ArrayList<Pessoa> ReadPessoaFromFile(){
         try{
-            FileInputStream fileIn = new FileInputStream(path);
+            FileInputStream fileIn = new FileInputStream(pessoaPath);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
             ArrayList<Pessoa> pessoas = (ArrayList<Pessoa>) objectIn.readObject();
@@ -60,9 +60,9 @@ public class Ficheiro {
             return null;
         }
     }
-    public ArrayList<Projeto> ReadProjFromFile(String path){
+    public ArrayList<Projeto> ReadProjFromFile(){
         try{
-            FileInputStream fileIn = new FileInputStream(path);
+            FileInputStream fileIn = new FileInputStream(projPath);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
             ArrayList<Projeto> projetos = (ArrayList<Projeto>) objectIn.readObject();
@@ -79,9 +79,9 @@ public class Ficheiro {
             return null;
         }
     }
-    public ArrayList<Tarefa> ReadTarefaFromFile(String path){
+    public ArrayList<Tarefa> ReadTarefaFromFile(){
         try{
-            FileInputStream fileIn = new FileInputStream(path);
+            FileInputStream fileIn = new FileInputStream(tarefaPath);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
             ArrayList<Tarefa> tarefas = (ArrayList<Tarefa>) objectIn.readObject();

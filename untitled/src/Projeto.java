@@ -2,9 +2,10 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Projeto implements Serializable {
+    private static final long serialVersionUID =6529685098267757690L;
     private String nome, acronimo;
     private Data dataInicio, dataFim;
-    private int duaracao;
+    private int duracao;
     private ArrayList<Pessoa> equipa;
     private ArrayList<Tarefa> tarefas;
     private Pessoa chefe;
@@ -14,9 +15,25 @@ public class Projeto implements Serializable {
         this.acronimo=acronimo;
         this.dataInicio=dataI;
         this.dataFim=dataF;
-        this.duaracao=duracao;
+        this.duracao=duracao;
         //this.chefe=chefe;
     }
+
+    public String getNome(){return nome;}
+
+    public void setNome(String nome){this.nome=nome;}
+
+    public String getAcronimo(){return nome;}
+
+    public void setAcronimo(String acronimo){this.acronimo=acronimo;}
+
+    public Data getDataInicio(){return dataInicio;}
+
+    public Data getDataFim(){return dataFim;}
+
+    public int getDuaracao(){return duracao;}
+
+    public Pessoa getChefe(){return chefe;}
 
     public void associaPessoa(Pessoa pessoa){
         equipa.add(pessoa);

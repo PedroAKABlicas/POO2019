@@ -3,7 +3,7 @@ public class Licenciado extends Bolseiro{
     public Licenciado(String user, String email, Data diai, Data diaf) {
         super(user, email, diai, diaf);
     }
-
+    @Override
     public Pessoa getOrientador() {return orientador;}
     @Override
     public String getTipo() {return "Licenciado";}

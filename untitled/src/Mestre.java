@@ -4,7 +4,7 @@ public class Mestre extends Bolseiro{
         super(user, email, diai, diaf);
         this.orientador=orientador;
     }
-
+    @Override
     public Pessoa getOrientador() {return orientador;}
     @Override
     public String getTipo() {return "Mestre";}

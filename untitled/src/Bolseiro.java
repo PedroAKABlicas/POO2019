@@ -5,4 +5,6 @@ public class Bolseiro extends Pessoa {
         this.datai = diai;
         this.dataf = diaf;
     }
+
+    public String getTipo() {return "Bolseiro";}
 }

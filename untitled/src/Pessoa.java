@@ -18,4 +18,6 @@ public class Pessoa implements Serializable {
 
     public String getTipo(){return "pessoa";}
 
+    public Pessoa getOrientador(){return null;}
+
 }
