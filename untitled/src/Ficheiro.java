@@ -2,12 +2,13 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Ficheiro {
-    private static final String pessoaPath ="/files/pessoas";
-    private static final String projPath = "/files/projetos";
-    private static final String tarefaPath="/files/tarefas";
+    private static final String pessoaPath ="files/pessoas";
+    private static final String projPath = "files/projetos";
+    private static final String tarefaPath="files/tarefas";
 
     public void WritePessoaToFile(ArrayList<Pessoa> pessoas){
         try{
+            /*File fPessoa = new File(pessoaPath);*/
             FileOutputStream fileOut = new FileOutputStream(pessoaPath);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(pessoas);
@@ -17,9 +18,10 @@ public class Ficheiro {
         }
     }
 
-    public void WriteProjetoToFile(ArrayList<Projeto> projetos){
+    public static void WriteProjetoToFile(ArrayList<Projeto> projetos){
         try{
-            FileOutputStream fileOut = new FileOutputStream(pessoaPath);
+            File fProj = new File(projPath);
+            FileOutputStream fileOut = new FileOutputStream(fProj);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
             objectOut.writeObject(projetos);
             objectOut.close();

@@ -5,6 +5,6 @@ public class Licenciado extends Bolseiro{
     }
 
     public Pessoa getOrientador() {return orientador;}
-
+    @Override
     public String getTipo() {return "Licenciado";}
 }

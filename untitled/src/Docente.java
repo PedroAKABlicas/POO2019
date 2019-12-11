@@ -10,6 +10,6 @@ public class Docente extends Pessoa {
     public int getMecanografico() {return mecanografico;}
 
     public String getArea() {return area;}
-
+    @Override
     public String getTipo() {return "Docente";}
 }
