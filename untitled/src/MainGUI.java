@@ -31,7 +31,6 @@ public class MainGUI extends JFrame{
             @Override
             public void actionPerformed(ActionEvent e){btnVerAtrasoActionListener();}
         });
-
         add(btnAlterarProjeto);
         add(btnCriaProjeto);
         add(btnVerAtraso);

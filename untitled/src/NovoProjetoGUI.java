@@ -6,9 +6,11 @@ import java.awt.event.FocusListener;
 import java.util.ArrayList;
 
 public class NovoProjetoGUI extends JFrame {
-    private JLabel labelNome, labelAcronimo, labelDuracao, labelDataI, labelDataF;
+    private JLabel labelNome, labelAcronimo, labelDuracao, labelDataI, labelDataF, lblChefe;
     private JTextField txtNome, txtAcronimo, txtDuracao, txtDataI, txtDataF;
     protected JButton btnCria, btnVoltar;
+    protected JComboBox comboPessoa;
+    protected DefaultComboBoxModel modelPessoa;
     ArrayList<Projeto> projetos = new ArrayList<>();
     Projeto proj;
     MainGUI menu;
