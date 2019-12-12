@@ -1,14 +1,13 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
-import java.util.*;
 
 public class MainGUI extends JFrame{
     protected JButton btnCriaProjeto, btnAlterarProjeto, btnVerAtraso, btnVerConcluido, btnAddPessoa;
     private JLabel labelTeste;
-    public MainGUI (){
+    public Cisuc cisuc;
+    public MainGUI (Cisuc cisuc){
+        this.cisuc=cisuc;
         setLayout(null);
         btnCriaProjeto = new JButton("Criar Projeto");
         btnCriaProjeto.setBounds(55, 40, 300, 25);
@@ -20,6 +19,19 @@ public class MainGUI extends JFrame{
         btnVerConcluido.setBounds(55, 160, 300, 25);
         btnAddPessoa = new JButton("Adicionar Pessoa");
         btnAddPessoa.setBounds(55, 200, 300, 25);
+
+        btnCriaProjeto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnCriaProjetoActionListener();
+            }
+        });
+
+        btnVerAtraso.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){btnVerAtrasoActionListener();}
+        });
+
         add(btnAlterarProjeto);
         add(btnCriaProjeto);
         add(btnVerAtraso);
@@ -28,5 +40,15 @@ public class MainGUI extends JFrame{
     }
 
 
+    private void btnCriaProjetoActionListener() {
+        NovoProjetoGUI n = new NovoProjetoGUI(this);
+        n.setVisible(true);
+        this.setVisible(false);
+    }
 
+    private void btnVerAtrasoActionListener(){
+        AtrasadosGUI atraso = new AtrasadosGUI(this);
+        atraso.setVisible(true);
+        this.setVisible(false);
+    }
 }

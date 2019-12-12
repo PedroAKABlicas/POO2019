@@ -30,17 +30,6 @@ public class Ficheiro {
         }
     }
 
-    public void WriteTarefaToFile(ArrayList<Tarefa> tarefas){
-        try{
-            FileOutputStream fileOut = new FileOutputStream(pessoaPath);
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(tarefas);
-            objectOut.close();
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }
-
     public ArrayList<Pessoa> ReadPessoaFromFile(){
         try{
             FileInputStream fileIn = new FileInputStream(pessoaPath);
@@ -68,25 +57,6 @@ public class Ficheiro {
             ArrayList<Projeto> projetos = (ArrayList<Projeto>) objectIn.readObject();
             objectIn.close();
             return projetos;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return null;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
-    }
-    public ArrayList<Tarefa> ReadTarefaFromFile(){
-        try{
-            FileInputStream fileIn = new FileInputStream(tarefaPath);
-            ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-
-            ArrayList<Tarefa> tarefas = (ArrayList<Tarefa>) objectIn.readObject();
-            objectIn.close();
-            return tarefas;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             return null;
