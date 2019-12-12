@@ -2,12 +2,14 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MainGUI extends JFrame{
+public class MainGUI extends JFrame {
+
     protected JButton btnCriaProjeto, btnAlterarProjeto, btnVerAtraso, btnVerConcluido, btnAddPessoa;
     private JLabel labelTeste;
     public Cisuc cisuc;
-    public MainGUI (Cisuc cisuc){
-        this.cisuc=cisuc;
+
+    public MainGUI(Cisuc cisuc) {
+        this.cisuc = cisuc;
         setLayout(null);
         btnCriaProjeto = new JButton("Criar Projeto");
         btnCriaProjeto.setBounds(55, 40, 300, 25);
@@ -27,9 +29,18 @@ public class MainGUI extends JFrame{
             }
         });
 
-        btnVerAtraso.addActionListener(new ActionListener(){
+        btnAddPessoa.addActionListener(new ActionListener() {
             @Override
-            public void actionPerformed(ActionEvent e){btnVerAtrasoActionListener();}
+            public void actionPerformed(ActionEvent e) {
+                btnAddPessoaActionListener();
+            }
+        });
+
+        btnVerAtraso.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnVerAtrasoActionListener();
+            }
         });
         add(btnAlterarProjeto);
         add(btnCriaProjeto);
@@ -46,6 +57,13 @@ public class MainGUI extends JFrame{
         n.setVisible(true);
         this.setVisible(false);
     }
+    private void btnAddPessoaActionListener() {
+        Criarpessoa nova = new Criarpessoa(this);
+        nova.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        nova.setSize(450,250);
+        nova.setVisible(true);
+        this.setVisible(false);
+    }
 
     private void btnVerAtrasoActionListener(){
         AtrasadosGUI atraso = new AtrasadosGUI(this);
@@ -55,3 +73,4 @@ public class MainGUI extends JFrame{
         this.setVisible(false);
     }
 }
+

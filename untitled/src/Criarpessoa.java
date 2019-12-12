@@ -1,4 +1,5 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -11,8 +12,22 @@ public class Criarpessoa extends JFrame{
     String[] cargoStrings = { "Docente", "Licenciatura", "Mestrado", "Doutoramento" };
     protected JComboBox cargo,orientador;
     protected JTextField nome,mail;
-    public Criarpessoa (){
+    MainGUI menu;
+    public Criarpessoa (MainGUI menu){
         setLayout(null);
+        this.menu=menu;
+        btnVoltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnVoltarActionListener();
+            }
+        });
+        cargo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cargoActionListener(e);
+            }
+        });
         label1 = new JLabel("Test");
         label1.setText("Cargo:");
         label1.setBounds(50,25, 200,30);
@@ -47,10 +62,23 @@ public class Criarpessoa extends JFrame{
         add(label4);
         add(mail);
         add(btnVoltar);
-
-
     }
 
 
 
+
+    private void btnVoltarActionListener(){
+        MainGUI menu = new MainGUI(this.menu.cisuc);
+        menu.setSize(420, 300);
+        menu.setVisible(true);
+        this.setVisible(false);
+    }
+    private void cargoActionListener(ActionEvent e){
+        JComboBox cb=(JComboBox)e.getSource();
+        Integer carg=cb.getSelectedIndex();
+        if ((carg) ==0) {
+            orientador.disable();
+        }
+    }
 }
+
