@@ -42,12 +42,16 @@ public class MainGUI extends JFrame{
 
     private void btnCriaProjetoActionListener() {
         NovoProjetoGUI n = new NovoProjetoGUI(this);
+        n.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        n.setSize(450,250);
         n.setVisible(true);
         this.setVisible(false);
     }
 
     private void btnVerAtrasoActionListener(){
         AtrasadosGUI atraso = new AtrasadosGUI(this);
+        atraso.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        atraso.setSize(475,300);
         atraso.setVisible(true);
         this.setVisible(false);
     }

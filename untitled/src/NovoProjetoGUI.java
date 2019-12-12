@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
@@ -9,7 +11,9 @@ public class NovoProjetoGUI extends JFrame {
     protected JButton btnCria, btnVoltar;
     ArrayList<Projeto> projetos = new ArrayList<>();
     Projeto proj;
+    MainGUI menu;
     public NovoProjetoGUI(MainGUI menu) {
+        this.menu=menu;
         setLayout(null);
         labelNome = new JLabel("Nome do projeto: ");
         labelNome.setBounds(40, 40, 200, 20);
@@ -61,6 +65,12 @@ public class NovoProjetoGUI extends JFrame {
             Ficheiro ficheiro = new Ficheiro();
             ficheiro.WriteProjetoToFile(projetos);
         });
+        btnVoltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnVoltarActionListener();
+            }
+        });
         txtDuracao.addFocusListener(new FocusListener() {
             public void focusGained(FocusEvent e) {
                 txtDuracao.setText("");
@@ -90,5 +100,11 @@ public class NovoProjetoGUI extends JFrame {
                 // nothing
             }
         });
+    }
+    private void btnVoltarActionListener(){
+        MainGUI menu = new MainGUI(this.menu.cisuc);
+        menu.setSize(420, 300);
+        menu.setVisible(true);
+        this.setVisible(false);
     }
 }
