@@ -1,6 +1,7 @@
 import java.io.Serializable;
 
 public class Data implements Serializable {
+    private static final long serialVersionUID =6529685098267757690L;
     public int dia, mes, ano;
 
     public Data (int dia, int mes, int ano){
@@ -21,16 +22,16 @@ public class Data implements Serializable {
         return mes;
     }
 
-    public Boolean comparator(Data datai, Data dataf){
-        if(dataf.ano>datai.ano){
+    public Boolean comparator(Data dataAtual){
+        if(dataAtual.ano>this.ano){
             return true;
         }else{
-            if(datai.ano==dataf.ano){
-                if(dataf.mes>datai.mes){
+            if(this.ano==dataAtual.ano){
+                if(dataAtual.mes>this.mes){
                     return true;
                 }else{
-                    if(dataf.mes==datai.mes){
-                        if(dataf.dia>datai.dia){
+                    if(dataAtual.mes==this.mes){
+                        if(dataAtual.dia>this.dia){
                             return true;
                         }
                         else{
