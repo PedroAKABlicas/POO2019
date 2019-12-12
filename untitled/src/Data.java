@@ -22,7 +22,7 @@ public class Data implements Serializable {
         return mes;
     }
 
-    public Boolean comparator(Data dataAtual){
+    public Boolean compare(Data dataAtual){
         if(dataAtual.ano>this.ano){
             return true;
         }else{
@@ -47,6 +47,6 @@ public class Data implements Serializable {
 
     @Override
     public String toString() {
-        return super.toString();
+        return this.dia+"/"+this.mes+"/"+this.ano;
     }
 }

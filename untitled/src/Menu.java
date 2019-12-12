@@ -31,6 +31,8 @@ public class Menu implements ActionListener, WindowListener{
         novoGUI.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         novoGUI.setSize(450, 250);
         menu.setVisible(true);
+        atrasadosGUI atraso = new atrasadosGUI(listaProjeto);
+        atraso.setSize(300, 430);
 
         novoGUI.btnVoltar.addActionListener(e->{
             novoGUI.setVisible(false);
@@ -40,6 +42,11 @@ public class Menu implements ActionListener, WindowListener{
         menu.btnCriaProjeto.addActionListener(e->{
             menu.setVisible(false);
             novoGUI.setVisible(true);
+        });
+
+        menu.btnVerAtraso.addActionListener(e->{
+            menu.setVisible(false);
+            atraso.setVisible(true);
         });
 
 

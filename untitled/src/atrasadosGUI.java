@@ -8,11 +8,20 @@ public class atrasadosGUI extends JFrame {
     public JList listProjeto;
     private DefaultListModel<String> listModel = new DefaultListModel<>();
     public atrasadosGUI(ArrayList<Projeto> projetos){
-        LocalDate dataAtual=java.time.LocalDate.now();
+        lblTitulo = new JLabel("Projetos atrasados.");
+        lblTitulo.setBounds(150,40,130,20);
+        listProjeto = new JList();
+        listProjeto.setBounds(70, 80, 200, 300);
+        LocalDate dataTemp=java.time.LocalDate.now();
+        Data dataAtual = new Data(dataTemp.getDayOfMonth(), dataTemp.getMonthValue(), dataTemp.getYear());
         for(Projeto proj : projetos){
-            if(proj.getDataFim().comparator(dataAtual))
-            listModel.addElement(proj.getNome());
+            System.out.println(proj.getNome() + proj.getDataFim());
+            if(proj.getDataFim().compare(dataAtual)){
+                listModel.addElement(proj.getNome()+"   "+proj.getDataFim().toString());
+            }
         }
         listProjeto.setModel(listModel);
+        add(lblTitulo);
+        add(listProjeto);
     }
 }
