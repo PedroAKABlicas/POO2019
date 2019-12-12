@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 public class MainGUI extends JFrame {
 
     protected JButton btnCriaProjeto, btnAlterarProjeto, btnVerAtraso, btnVerConcluido, btnAddPessoa;
-    private JLabel labelTeste;
     public Cisuc cisuc;
 
     public MainGUI(Cisuc cisuc) {
@@ -60,7 +59,7 @@ public class MainGUI extends JFrame {
     private void btnAddPessoaActionListener() {
         Criarpessoa nova = new Criarpessoa(this);
         nova.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        nova.setSize(450,250);
+        nova.setSize(450,350);
         nova.setVisible(true);
         this.setVisible(false);
     }

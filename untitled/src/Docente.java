@@ -1,7 +1,7 @@
 public class Docente extends Pessoa {
     private int mecanografico;
     private String area;
-    public Docente(String user, String email, boolean chefe, int mecanografico, String area) {
+    public Docente(String user, String email, int mecanografico, String area) {
         super(user, email);
         this.mecanografico=mecanografico;
         this.area=area;
