@@ -9,6 +9,7 @@ public class VerProjetoGUI extends JFrame {
     private String[] pessoas, projetos, delPessoas;
     private JButton btnConsTarefa, btnVoltar, btnAddPessoa, btnVerProjeto, btnDelPessoa;
     private DefaultComboBoxModel modelPessoa, modelProj, modelPessoasDel;
+    private JLabel lblCusto;
     private ArrayList<Pessoa> peepz = new ArrayList<>();
     MainGUI menu;
     int index;
@@ -53,6 +54,8 @@ public class VerProjetoGUI extends JFrame {
         btnVoltar.setBounds(210, 130, 80, 20);
         lblPessoaDel = new JLabel("Retirar pessoa");
         lblPessoaDel.setBounds(100,100,100,20);
+        lblCusto = atualizaCusto(index);
+        lblCusto.setBounds(210, 160, 100, 20);
         btnVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -95,6 +98,7 @@ public class VerProjetoGUI extends JFrame {
         add(lblPessoaDel);
         add(comboPessoaDel);
         add(btnDelPessoa);
+        add(lblCusto);
     }
 
     private DefaultComboBoxModel AtualizaPeepz(int index){
@@ -141,6 +145,7 @@ public class VerProjetoGUI extends JFrame {
         JComboBox cb=(JComboBox)e.getSource();
         int index=cb.getSelectedIndex();
         AtualizaPeepz(index);
+        atualizaCusto(index);
     }
 
     private void btnDelPessoaActionListener(){
@@ -151,5 +156,12 @@ public class VerProjetoGUI extends JFrame {
                 menu.cisuc.listaProjeto.get(comboProj.getSelectedIndex()).getTarefas().get(i).tiraPessoa();
             }
         }
+        Ficheiro f = new Ficheiro();
+        f.WriteToFile(menu.cisuc);
+    }
+
+    private JLabel atualizaCusto(int index){
+
+        return (new JLabel(menu.cisuc.listaProjeto.get(index).getCusto()));
     }
 }

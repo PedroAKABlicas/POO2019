@@ -41,12 +41,12 @@ public class Projeto implements Serializable {
         equipa.add(pessoa);
     }
 
-    public int getCusto(){
+    public String getCusto(){
         int custo=0;
         for (Pessoa pessoa : equipa){
             custo+=pessoa.getTipo();
         }
-        return custo;
+        return String.valueOf(custo);
     }
 
     public void addTarefa(Tarefa tarefa){

@@ -160,9 +160,12 @@ public class VerTarefaGUI extends JFrame {
         consulta.setVisible(true);
         this.setVisible(false);
     }
-    private void btnMudaTaxaActionListener(){
-        int i=comboTarefas.getSelectedIndex();
-        int taxa=Integer.parseInt(JOptionPane.showInputDialog(this,"Em quanto aumentou a taxa?"));
+    private void btnMudaTaxaActionListener() {
+        int i = comboTarefas.getSelectedIndex();
+        int taxa = Integer.parseInt(JOptionPane.showInputDialog(this, "Em quanto aumentou a taxa?"));
         proj.menu.cisuc.listaProjeto.get(this.index).getTarefas().get(i).mudaTaxa(taxa);
+        Ficheiro f = new Ficheiro();
+        f.WriteToFile(proj.menu.cisuc);
     }
+
 }
