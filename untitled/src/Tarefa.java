@@ -5,14 +5,13 @@ public class Tarefa implements Serializable{
     private Data dataInicio, dataFim;
     private int duaracao;
     private Pessoa responsavel=null;
-    private String tipo;
+    private Double peso=0.0;
     private int taxa=0;
 
-    public Tarefa(Data datai, Data dataf, int duracao, String tipo){
+    public Tarefa(Data datai, Data dataf, int duracao){
         this.dataInicio=datai;
         this.dataFim=dataf;
         this.duaracao=duracao;
-        this.tipo=tipo;
     }
 
     public void associaPessoa(Pessoa pessoa){
@@ -22,6 +21,8 @@ public class Tarefa implements Serializable{
     public void mudaTaxa(int taxa){
         this.taxa+=taxa;
     }
+
+    public Double getPeso(){return this.peso;}
 
     public int getTaxa() {return taxa;}
 }
