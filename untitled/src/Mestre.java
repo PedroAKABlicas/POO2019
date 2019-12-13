@@ -9,4 +9,6 @@ public class Mestre extends Bolseiro{
     public Pessoa getOrientador() {return orientador;}
     @Override
     public int getTipo() {return custo;}
+    @Override
+    public Data getDataFim(){return dataf;}
 }

@@ -18,10 +18,25 @@ public class Pessoa implements Serializable {
     public ArrayList<Tarefa> getTarefas() {return tarefas;}
 
     public void associaTarefa(Tarefa tarefa){
-        this.tarefas.add(tarefa);
+        tarefas.add(tarefa);
+    }
+
+    public Boolean verTarefa(Tarefa tarefa){
+        Double peso=0.0;
+        for(Tarefa aux:tarefas){
+            if(aux.getTaxa()!=100){
+                peso+=aux.getPeso();
+            }
+        }
+        if(peso+tarefa.getPeso()>1){
+            return false;
+        }else{
+            return true;
+        }
     }
 
     public int getTipo(){return 0;}
+
 
     public Pessoa getOrientador(){return null;}
 

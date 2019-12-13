@@ -9,6 +9,7 @@ public class Projeto implements Serializable {
     private ArrayList<Pessoa> equipa = new ArrayList<>();
     private ArrayList<Tarefa> tarefas = new ArrayList<>();
     private Pessoa chefe;
+    private Boolean acabado=false;
 
     public Projeto(String nome, String acronimo, Data dataI, Data dataF, int duracao, Pessoa chefe){
         this.nome=nome;
@@ -55,4 +56,6 @@ public class Projeto implements Serializable {
     public ArrayList<Tarefa> getTarefas(){return this.tarefas;}
 
     public ArrayList<Pessoa> getEquipa(){return this.equipa;}
+
+    public Boolean getAcabado(){return this.acabado;}
 }

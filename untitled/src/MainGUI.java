@@ -15,7 +15,7 @@ public class MainGUI extends JFrame {
         setLayout(null);
         btnCriaProjeto = new JButton("Criar Projeto");
         btnCriaProjeto.setBounds(55, 40, 300, 25);
-        btnVerProjeto = new JButton("Alterar Projeto");
+        btnVerProjeto = new JButton("Ver Projetos");
         btnVerProjeto.setBounds(55, 80, 300, 25);
         btnVerAtraso = new JButton("Ver Projetos Atrasados");
         btnVerAtraso.setBounds(55, 120, 300, 25);
@@ -76,7 +76,7 @@ public class MainGUI extends JFrame {
     private void btnVerAtrasoActionListener(){
         AtrasadosGUI atraso = new AtrasadosGUI(this);
         atraso.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        atraso.setSize(500,300);
+        atraso.setSize(400,600);
         atraso.setVisible(true);
         this.setVisible(false);
     }
@@ -85,8 +85,9 @@ public class MainGUI extends JFrame {
         VerProjetoGUI projetos = new VerProjetoGUI(this);
         projetos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         projetos.setSize(500,300);
-        projetos.setVisible(true);
         this.setVisible(false);
+        projetos.setVisible(true);
+
     }
 }
 

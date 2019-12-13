@@ -13,6 +13,7 @@ public class VerProjetoGUI extends JFrame {
     MainGUI menu;
     int index;
     public VerProjetoGUI(MainGUI menu){
+        this.setLayout(null);
         this.menu=menu;
         lblProj = new JLabel("Selecionar projeto: ");
         lblProj.setBounds(40,40,150,20);
@@ -107,8 +108,8 @@ public class VerProjetoGUI extends JFrame {
     }
 
     private void btnConsTarefaActionListener(){
-        AddTarefaGUI tarefa = new AddTarefaGUI(this, comboProj.getSelectedIndex());
-        tarefa.setSize(600, 400);
+        VerTarefaGUI tarefa = new VerTarefaGUI(this, comboProj.getSelectedIndex());
+        tarefa.setSize(600, 600);
         tarefa.setVisible(true);
         this.setVisible(false);
     }

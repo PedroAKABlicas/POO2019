@@ -12,11 +12,12 @@ public class AtrasadosGUI extends JFrame {
     MainGUI menu;
     private DefaultListModel<String> listModel = new DefaultListModel<>();
     public AtrasadosGUI(MainGUI menu){
+        this.setLayout(null);
         this.menu=menu;
         btnVoltar = new JButton("Voltar");
         btnVoltar.setBounds(130, 400, 80, 20);
         lblTitulo = new JLabel("Projetos atrasados.");
-        lblTitulo.setBounds(150,40,130,20);
+        lblTitulo.setBounds(120,40,130,20);
         listProjeto = new JList();
         listProjeto.setBounds(70, 80, 200, 300);
         LocalDate dataTemp=java.time.LocalDate.now();

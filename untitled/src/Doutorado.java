@@ -5,4 +5,6 @@ public class Doutorado extends Bolseiro {
     }
     @Override
     public int getTipo() {return custo;}
+    @Override
+    public Data getDataFim(){return dataf;}
 }

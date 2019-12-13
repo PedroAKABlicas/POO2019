@@ -117,4 +117,13 @@ public class Data implements Serializable {
             }
         }
     }
+    public Data addData(int mes){
+        this.mes=this.getMes()+mes;
+        if(this.mes>12){
+            this.ano+=1;
+            this.mes=this.mes-12;
+            return this;
+        }
+        return this;
+    }
 }

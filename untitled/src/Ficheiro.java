@@ -76,29 +76,23 @@ public class Ficheiro {
                             cisuc.listaPessoas.add(doutorado);
                             break;
                         case "Design":
-                            data=info[1].split("/");
-                            datai=new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
                             data=info[2].split("/");
-                            dataf=new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
-                            Tarefa design = new Design(datai, dataf, Integer.parseInt(info[3]), cisuc.listaPessoas.get(Integer.parseInt(info[4])));
+                            datai=new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
+                            Tarefa design = new Design(info[1], datai, Integer.parseInt(info[3]), cisuc.listaPessoas.get(Integer.parseInt(info[4])));
                             tarefas.add(design);
                             cisuc.listaPessoas.get(Integer.parseInt(info[4])).associaTarefa(design);
                             break;
                         case "Documentacao":
-                            data=info[1].split("/");
-                            datai=new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
                             data=info[2].split("/");
-                            dataf=new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
-                            Tarefa doc = new Documentacao(datai, dataf, Integer.parseInt(info[3]), cisuc.listaPessoas.get(Integer.parseInt(info[4])));
+                            datai=new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
+                            Tarefa doc = new Documentacao(info[1], datai, Integer.parseInt(info[3]), cisuc.listaPessoas.get(Integer.parseInt(info[4])));
                             tarefas.add(doc);
                             cisuc.listaPessoas.get(Integer.parseInt(info[4])).associaTarefa(doc);
                             break;
                         case "Desenvolvimento":
-                            data=info[1].split("/");
-                            datai=new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
                             data=info[2].split("/");
-                            dataf=new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
-                            Tarefa desenvolvimento = new Desenvolvimento(datai, dataf, Integer.parseInt(info[3]), cisuc.listaPessoas.get(Integer.parseInt(info[4])));
+                            datai=new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
+                            Tarefa desenvolvimento = new Desenvolvimento(info[1], datai, Integer.parseInt(info[3]), cisuc.listaPessoas.get(Integer.parseInt(info[4])));
                             tarefas.add(desenvolvimento);
                             cisuc.listaPessoas.get(Integer.parseInt(info[4])).associaTarefa(desenvolvimento);
                             break;
@@ -110,7 +104,7 @@ public class Ficheiro {
                             Projeto projeto = new Projeto(info[1], info[2], datai, dataf, Integer.parseInt(info[5]), cisuc.listaPessoas.get(Integer.parseInt(info[6])));
                             projeto.associaPessoa(cisuc.listaPessoas.get(Integer.parseInt(info[7])));
                             projeto.addTarefa(tarefas.get(Integer.parseInt(info[8])));
-                            projeto.addTarefa(tarefas.get(Integer.parseInt(info[8])));
+                            projeto.addTarefa(tarefas.get(Integer.parseInt(info[9])));
                             cisuc.listaProjeto.add(projeto);
                     }
                 }
