@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Pessoa implements Serializable {
     private static final long serialVersionUID =6529685098267757690L;
     private String user, email;
-    private ArrayList<Tarefa> tarefas;
+    private ArrayList<Tarefa> tarefas=new ArrayList<>();
 
     public Pessoa(String user, String email){
         this.user=user;
@@ -16,6 +16,10 @@ public class Pessoa implements Serializable {
     public String getEmail() {return email;}
 
     public ArrayList<Tarefa> getTarefas() {return tarefas;}
+
+    public void associaTarefa(Tarefa tarefa){
+        this.tarefas.add(tarefa);
+    }
 
     public int getTipo(){return 0;}
 

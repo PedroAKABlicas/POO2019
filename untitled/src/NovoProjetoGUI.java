@@ -87,7 +87,7 @@ public class NovoProjetoGUI extends JFrame {
                 proj = new Projeto(txtNome.getText(), txtAcronimo.getText(), dataI, dataF, Integer.parseInt(txtDuracao.getText()), peepz.get(comboPessoa.getSelectedIndex()));
                 menu.cisuc.listaProjeto.add(proj);
                 Ficheiro ficheiro = new Ficheiro();
-                ficheiro.WriteProjetoToFile(menu.cisuc.listaProjeto);
+                ficheiro.WriteToFile(menu.cisuc);
                 JOptionPane.showMessageDialog(null,"Projeto criado com sucesso.");
             }else{
                 JOptionPane.showMessageDialog(null, "Data Invalida");

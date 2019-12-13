@@ -24,7 +24,7 @@ public class Projeto implements Serializable {
 
     public void setNome(String nome){this.nome=nome;}
 
-    public String getAcronimo(){return nome;}
+    public String getAcronimo(){return acronimo;}
 
     public void setAcronimo(String acronimo){this.acronimo=acronimo;}
 
@@ -46,6 +46,10 @@ public class Projeto implements Serializable {
             custo+=pessoa.getTipo();
         }
         return custo;
+    }
+
+    public void addTarefa(Tarefa tarefa){
+        tarefas.add(tarefa);
     }
 
     public ArrayList<Tarefa> getTarefas(){return this.tarefas;}

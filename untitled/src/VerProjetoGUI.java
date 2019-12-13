@@ -96,7 +96,7 @@ public class VerProjetoGUI extends JFrame {
     private void btnAddPessoaActionListener(int index, Pessoa pessoa){
         menu.cisuc.listaProjeto.get(index).associaPessoa(pessoa);
         Ficheiro ficheiro = new Ficheiro();
-        ficheiro.WriteProjetoToFile(menu.cisuc.listaProjeto);
+        ficheiro.WriteToFile(menu.cisuc);
         AtualizaPeepz(index);
     }
 
