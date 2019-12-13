@@ -67,7 +67,7 @@ public class MainGUI extends JFrame {
     private void btnVerAtrasoActionListener(){
         AtrasadosGUI atraso = new AtrasadosGUI(this);
         atraso.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        atraso.setSize(475,300);
+        atraso.setSize(500,300);
         atraso.setVisible(true);
         this.setVisible(false);
     }

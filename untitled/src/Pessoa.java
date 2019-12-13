@@ -16,7 +16,7 @@ public class Pessoa implements Serializable {
 
     public ArrayList<Tarefa> getTarefas() {return tarefas;}
 
-    public String getTipo(){return "pessoa";}
+    public int getTipo(){return 0;}
 
     public Pessoa getOrientador(){return null;}
 

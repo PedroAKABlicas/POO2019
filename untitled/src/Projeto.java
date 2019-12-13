@@ -42,19 +42,7 @@ public class Projeto implements Serializable {
     public int getCusto(){
         int custo=0;
         for (Pessoa pessoa : equipa){
-            String tipo = pessoa.getTipo();
-            if (tipo=="Licencidado"){
-                custo+=800;
-            }else{
-                if (tipo=="Mestre"){
-                    custo+=1000;
-                }
-                else{
-                    if(tipo=="Doutorado"){
-                        custo+=1200;
-                    }
-                }
-            }
+            custo+=pessoa.getTipo();
         }
         return custo;
     }

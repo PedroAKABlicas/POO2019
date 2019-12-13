@@ -138,7 +138,7 @@ public class Criarpessoa extends JFrame{
 
     private DefaultComboBoxModel AtualizaDoc(){
         for(Pessoa pessoa : menu.cisuc.listaPessoas){
-            if(pessoa.getTipo().equals("Docente")){
+            if(pessoa.getTipo()==0){
                 docs.add(pessoa);
             }
         }

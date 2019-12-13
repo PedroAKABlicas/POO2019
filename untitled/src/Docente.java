@@ -11,5 +11,5 @@ public class Docente extends Pessoa {
 
     public String getArea() {return area;}
     @Override
-    public String getTipo() {return "Docente";}
+    public int getTipo() {return 0;}
 }
