@@ -12,22 +12,12 @@ public class Criarpessoa extends JFrame{
     private String[] cargoStrings = { "Docente", "Licenciatura", "Mestrado", "Doutoramento" };
     protected JComboBox cargo, orientador;
     protected JTextField txtNome, txtMail;
+    private String[] aux;
+    protected DefaultComboBoxModel modelDoc;
     private ArrayList<Pessoa> docs = new ArrayList<>();
     MainGUI menu;
     public Criarpessoa (MainGUI menu){
         this.menu=menu;
-        if(menu.cisuc.listaPessoas!=null){
-            for(Pessoa pessoa : menu.cisuc.listaPessoas){
-                if(pessoa.getTipo().equals("Docente")){
-                    docs.add(pessoa);
-                }
-            }
-        }
-        String[] aux = new String[docs.size()];
-        for(int i=0; i<docs.size(); i++){
-            aux[i]=docs.get(i).getUser();
-        }
-        orientador = new JComboBox(aux);
         setLayout(null);
         lblCargo = new JLabel("Cargo");
         lblCargo.setBounds(50,25, 200,30);
@@ -37,7 +27,7 @@ public class Criarpessoa extends JFrame{
         lblOrientador = new JLabel("Test");
         lblOrientador.setText("Orientador:");
         lblOrientador.setBounds(50,67, 200,30);
-        orientador = new JComboBox();
+        orientador = new JComboBox(AtualizaDoc());
         orientador.setBounds(125,71,200,20);
         txtMail= new JTextField();
         txtMail.setBounds(125,110,200,25);
@@ -89,6 +79,8 @@ public class Criarpessoa extends JFrame{
             case 0:
                 Pessoa doc = new Docente(txtNome.getText(), txtMail.getText(), 0, null);
                 menu.cisuc.listaPessoas.add(doc);
+                AtualizaDoc();
+                guardaFile(menu.cisuc.listaPessoas);
                 break;
             case 1:
                 nome = orientador.getSelectedItem().toString();
@@ -99,14 +91,17 @@ public class Criarpessoa extends JFrame{
                 nome = orientador.getSelectedItem().toString();
                 Pessoa mestre = new Mestre(txtNome.getText(), txtMail.getText(), null, null, getOrientador(nome));
                 menu.cisuc.listaPessoas.add(mestre);
+                guardaFile(menu.cisuc.listaPessoas);
                 break;
             case 3:
                 nome = orientador.getSelectedItem().toString();
                 Pessoa dout = new Doutorado(txtNome.getText(), txtMail.getText(), null, null);
                 menu.cisuc.listaPessoas.add(dout);
+                guardaFile(menu.cisuc.listaPessoas);
                 break;
         }
         guardaPessoas(menu.cisuc.listaPessoas);
+        JOptionPane.showMessageDialog(null, "Pessoa Registada!");
     }
 
 
@@ -121,6 +116,8 @@ public class Criarpessoa extends JFrame{
         Integer carg=cb.getSelectedIndex();
         if ((carg) ==0 || carg==3) {
             orientador.disable();
+        }else{
+            orientador.enable();
         }
     }
 
@@ -137,6 +134,24 @@ public class Criarpessoa extends JFrame{
     private void guardaPessoas(ArrayList<Pessoa> pessoas){
         Ficheiro ficheiro = new Ficheiro();
         ficheiro.WritePessoaToFile(pessoas);
+    }
+
+    private DefaultComboBoxModel AtualizaDoc(){
+        for(Pessoa pessoa : menu.cisuc.listaPessoas){
+            if(pessoa.getTipo().equals("Docente")){
+                docs.add(pessoa);
+            }
+        }
+        aux = new String[docs.size()];
+        for(int i=0; i<docs.size(); i++){
+            aux[i]=docs.get(i).getUser();
+        }
+        modelDoc = new DefaultComboBoxModel<>(aux);
+        return modelDoc;
+    }
+    private void guardaFile(ArrayList<Pessoa> lista){
+        Ficheiro ficheiro = new Ficheiro();
+        ficheiro.WritePessoaToFile(lista);
     }
 }
 
