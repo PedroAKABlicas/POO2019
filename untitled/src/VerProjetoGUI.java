@@ -4,11 +4,11 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class VerProjetoGUI extends JFrame {
-    private JLabel lblAddPessoa, lblProj;
-    private JComboBox comboPessoa, comboProj;
-    private String[] pessoas, projetos;
-    private JButton btnConsTarefa, btnVoltar, btnAddPessoa, btnVerProjeto;
-    private DefaultComboBoxModel modelPessoa, modelProj;
+    private JLabel lblAddPessoa, lblProj, lblPessoaDel;
+    private JComboBox comboPessoa, comboProj, comboPessoaDel;
+    private String[] pessoas, projetos, delPessoas;
+    private JButton btnConsTarefa, btnVoltar, btnAddPessoa, btnVerProjeto, btnDelPessoa;
+    private DefaultComboBoxModel modelPessoa, modelProj, modelPessoasDel;
     private ArrayList<Pessoa> peepz = new ArrayList<>();
     MainGUI menu;
     int index;
@@ -36,10 +36,23 @@ public class VerProjetoGUI extends JFrame {
         comboPessoa.setBounds(170,70,80,20);
         btnAddPessoa = new JButton("Associar");
         btnAddPessoa.setBounds(260, 70, 80, 20);
+        lblPessoaDel = new JLabel("Retirar pessoa");
+        lblPessoaDel.setBounds(40,100,150,20);
+        delPessoas = new String[menu.cisuc.listaProjeto.get(comboProj.getSelectedIndex()).getEquipa().size()];
+        for(i=0;i<menu.cisuc.listaProjeto.get(comboProj.getSelectedIndex()).getEquipa().size();i++){
+            delPessoas[i]=menu.cisuc.listaProjeto.get(comboProj.getSelectedIndex()).getEquipa().get(i).getUser();
+        }
+        modelPessoasDel = new DefaultComboBoxModel(delPessoas);
+        comboPessoaDel = new JComboBox(modelPessoasDel);
+        comboPessoaDel.setBounds(190, 100, 100, 20);
+        btnDelPessoa = new JButton("Apagar");
+        btnDelPessoa.setBounds(300, 100, 100, 20);
         btnConsTarefa=new JButton("Consultar Tarefas");
-        btnConsTarefa.setBounds(80, 100, 180, 20);
+        btnConsTarefa.setBounds(80, 130, 180, 20);
         btnVoltar = new JButton("Voltar");
-        btnVoltar.setBounds(210, 100, 80, 20);
+        btnVoltar.setBounds(210, 130, 80, 20);
+        lblPessoaDel = new JLabel("Retirar pessoa");
+        lblPessoaDel.setBounds(100,100,100,20);
         btnVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -64,6 +77,13 @@ public class VerProjetoGUI extends JFrame {
                 btnConsTarefaActionListener();
             }
         });
+
+        btnDelPessoa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnDelPessoaActionListener();
+            }
+        });
         add(lblAddPessoa);
         add(lblProj);
         add(comboPessoa);
@@ -72,6 +92,9 @@ public class VerProjetoGUI extends JFrame {
         add(btnConsTarefa);
         add(btnVerProjeto);
         add(btnVoltar);
+        add(lblPessoaDel);
+        add(comboPessoaDel);
+        add(btnDelPessoa);
     }
 
     private DefaultComboBoxModel AtualizaPeepz(int index){
@@ -118,5 +141,15 @@ public class VerProjetoGUI extends JFrame {
         JComboBox cb=(JComboBox)e.getSource();
         int index=cb.getSelectedIndex();
         AtualizaPeepz(index);
+    }
+
+    private void btnDelPessoaActionListener(){
+        Pessoa pessoa=menu.cisuc.listaProjeto.get(comboProj.getSelectedIndex()).getEquipa().get(comboPessoaDel.getSelectedIndex());
+        menu.cisuc.listaProjeto.get(comboProj.getSelectedIndex()).getEquipa().remove(pessoa);
+        for(int i=0;i<menu.cisuc.listaProjeto.get(comboProj.getSelectedIndex()).getTarefas().size();i++){
+            if(menu.cisuc.listaProjeto.get(comboProj.getSelectedIndex()).getTarefas().get(i).getResponsavel()==pessoa){
+                menu.cisuc.listaProjeto.get(comboProj.getSelectedIndex()).getTarefas().get(i).tiraPessoa();
+            }
+        }
     }
 }

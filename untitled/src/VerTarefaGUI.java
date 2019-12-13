@@ -85,6 +85,12 @@ public class VerTarefaGUI extends JFrame {
                 btnTarefaAtrasoActionListener();
             }
         });
+        btnMudaTaxa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnMudaTaxaActionListener();
+            }
+        });
     }
     private void btnVoltarActionListener(){
         VerProjetoGUI proj = new VerProjetoGUI(this.proj.menu);
@@ -153,5 +159,10 @@ public class VerTarefaGUI extends JFrame {
         consulta.setSize(400, 600);
         consulta.setVisible(true);
         this.setVisible(false);
+    }
+    private void btnMudaTaxaActionListener(){
+        int i=comboTarefas.getSelectedIndex();
+        int taxa=Integer.parseInt(JOptionPane.showInputDialog(this,"Em quanto aumentou a taxa?"));
+        proj.menu.cisuc.listaProjeto.get(this.index).getTarefas().get(i).mudaTaxa(taxa);
     }
 }

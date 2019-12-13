@@ -33,11 +33,13 @@ public class Tarefa implements Serializable{
 
     public Double getPeso(){return this.peso;}
 
-    public int getDuaracao(){return duaracao;}
+    public int getDuaracao(){return this.duaracao;}
 
-    public int getTaxa() {return taxa;}
+    public int getTaxa() {return this.taxa;}
 
-    public Data getDataInicio(){return dataInicio;}
+    public Data getDataInicio(){return this.dataInicio;}
 
-    public String getNome(){return nome;}
+    public String getNome(){return this.nome;}
+
+    public Pessoa getResponsavel(){return this.responsavel;}
 }
