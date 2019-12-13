@@ -131,10 +131,16 @@ public class Criarpessoa extends JFrame{
     private void cargoActionListener(ActionEvent e){
         JComboBox cb=(JComboBox)e.getSource();
         Integer carg=cb.getSelectedIndex();
-        if ((carg) ==0 || carg==3) {
+        if ((carg) ==0) {
             orientador.disable();
+            txtDataF.disable();
+            txtDataI.disable();
+            txtNumero.enable();
         }else{
             orientador.enable();
+            txtDataF.enable();
+            txtDataI.enable();
+            txtNumero.disable();
         }
     }
 
