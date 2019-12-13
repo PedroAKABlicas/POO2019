@@ -49,4 +49,72 @@ public class Data implements Serializable {
     public String toString() {
         return this.dia+"/"+this.mes+"/"+this.ano;
     }
+
+    public Boolean checkData(){
+        if(this.ano%4==0){
+            switch(this.mes){
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    if(this.dia<1 || this.dia>31){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                case 2:
+                    if(this.dia<1 || this.dia>29){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    if(this.dia<1 || this.dia>30){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                default:
+                    return false;
+            }
+        }else{
+            switch(this.mes){
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    if(this.dia<1 || this.dia>31){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                case 2:
+                    if(this.dia<1 || this.dia>28){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    if(this.dia<1 || this.dia>30){
+                        return false;
+                    }else{
+                        return true;
+                    }
+                default:
+                    return false;
+            }
+        }
+    }
 }

@@ -6,17 +6,18 @@ public class Projeto implements Serializable {
     private String nome, acronimo;
     private Data dataInicio, dataFim;
     private int duracao;
-    private ArrayList<Pessoa> equipa;
-    private ArrayList<Tarefa> tarefas;
+    private ArrayList<Pessoa> equipa = new ArrayList<>();
+    private ArrayList<Tarefa> tarefas = new ArrayList<>();
     private Pessoa chefe;
 
-    public Projeto(String nome, String acronimo, Data dataI, Data dataF, int duracao/*, Pessoa chefe*/){
+    public Projeto(String nome, String acronimo, Data dataI, Data dataF, int duracao, Pessoa chefe){
         this.nome=nome;
         this.acronimo=acronimo;
         this.dataInicio=dataI;
         this.dataFim=dataF;
         this.duracao=duracao;
-        //this.chefe=chefe;
+        this.chefe=chefe;
+        this.equipa.add(chefe);
     }
 
     public String getNome(){return nome;}
@@ -47,5 +48,7 @@ public class Projeto implements Serializable {
         return custo;
     }
 
-    public ArrayList<Tarefa> getTarefas(){return tarefas;}
+    public ArrayList<Tarefa> getTarefas(){return this.tarefas;}
+
+    public ArrayList<Pessoa> getEquipa(){return this.equipa;}
 }

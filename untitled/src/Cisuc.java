@@ -11,6 +11,8 @@ public class Cisuc{
     public ArrayList<Projeto> listaProjeto;
 
     public Cisuc(ArrayList<Pessoa> listaP, ArrayList<Projeto> lista){
+        this.listaProjeto = new ArrayList<Projeto>();
+        this.listaPessoas = new ArrayList<Pessoa>();
         this.listaProjeto=lista;
         this.listaPessoas=listaP;
     }

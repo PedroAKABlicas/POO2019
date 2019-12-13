@@ -11,6 +11,8 @@ public class NovoProjetoGUI extends JFrame {
     protected JButton btnCria, btnVoltar;
     protected JComboBox comboPessoa;
     protected DefaultComboBoxModel modelPessoa;
+    protected String[] aux;
+    private ArrayList<Pessoa> peepz = new ArrayList<>();
     ArrayList<Projeto> projetos = new ArrayList<>();
     Projeto proj;
     MainGUI menu;
@@ -38,9 +40,9 @@ public class NovoProjetoGUI extends JFrame {
         txtDataF = new JTextField("dd/mm/yy");
         txtDataF.setBounds(330, 130, 80, 20);
         btnCria = new JButton("Criar");
-        btnCria.setBounds(120, 160, 80, 20);
+        btnCria.setBounds(120, 200, 80, 20);
         btnVoltar = new JButton("Voltar");
-        btnVoltar.setBounds(220, 160, 80, 20);
+        btnVoltar.setBounds(220, 200, 80, 20);
         add(btnVoltar);
         add(labelAcronimo);
         add(labelDataF);
@@ -54,6 +56,25 @@ public class NovoProjetoGUI extends JFrame {
         add(txtDataI);
         add(txtDataF);
         add(btnCria);
+        for(Pessoa pessoa:menu.cisuc.listaPessoas){
+            if(pessoa.getTipo()==0){
+                peepz.add(pessoa);
+            }
+        }
+        aux = new String[peepz.size()];
+        for(int i=0; i<peepz.size(); i++){
+            aux[i]=peepz.get(i).getUser();
+        }
+        modelPessoa = new DefaultComboBoxModel(aux);
+        comboPessoa = new JComboBox(modelPessoa);
+        comboPessoa.setBounds(260, 160, 80, 20);
+        lblChefe = new JLabel("Selecione um investigador principal");
+        lblChefe.setBounds(40, 160, 170, 20);
+        add(lblChefe);
+        add(comboPessoa);
+        if(peepz.size()>0){
+            comboPessoa.setSelectedIndex(0);
+        }
         btnCria.addActionListener(e->{
             if (txtDuracao.getText()==null || txtAcronimo.getText()==null || txtDataF.getText()==null || txtDataI.getText()==null || txtNome.getText()==null){
                 JOptionPane.showMessageDialog(null, "Preencha os campos todos");
@@ -62,11 +83,15 @@ public class NovoProjetoGUI extends JFrame {
             Data dataI = new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
             data = txtDataF.getText().split("/");
             Data dataF = new Data(Integer.parseInt(data[0]), Integer.parseInt(data[1]), Integer.parseInt(data[2]));
-            proj = new Projeto(txtNome.getText(), txtAcronimo.getText(), dataI, dataF, Integer.parseInt(txtDuracao.getText()));
-            menu.cisuc.listaProjeto.add(proj);
-            Ficheiro ficheiro = new Ficheiro();
-            ficheiro.WriteProjetoToFile(menu.cisuc.listaProjeto);
-            JOptionPane.showMessageDialog(null,"Projeto criado com sucesso.");
+            if(dataI.checkData() && dataF.checkData()){
+                proj = new Projeto(txtNome.getText(), txtAcronimo.getText(), dataI, dataF, Integer.parseInt(txtDuracao.getText()), peepz.get(comboPessoa.getSelectedIndex()));
+                menu.cisuc.listaProjeto.add(proj);
+                Ficheiro ficheiro = new Ficheiro();
+                ficheiro.WriteProjetoToFile(menu.cisuc.listaProjeto);
+                JOptionPane.showMessageDialog(null,"Projeto criado com sucesso.");
+            }else{
+                JOptionPane.showMessageDialog(null, "Data Invalida");
+            }
         });
         btnVoltar.addActionListener(new ActionListener() {
             @Override

@@ -1,6 +1,7 @@
 import java.io.Serializable;
 
 public class Tarefa implements Serializable{
+    private static final long serialVersionUID =6529685098267757690L;
     private Data dataInicio, dataFim;
     private int duaracao;
     private Pessoa responsavel=null;

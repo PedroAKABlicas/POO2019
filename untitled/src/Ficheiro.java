@@ -2,28 +2,16 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Ficheiro {
-    private static final String pessoaPath ="files/pessoas";
-    private static final String projPath = "files/projetos";
-    private static final String tarefaPath="files/tarefas";
+    private static final String objPath ="files/obj_file", txtPath="files/txt_file";
 
-    public void WritePessoaToFile(ArrayList<Pessoa> pessoas){
+    public void WritePessoaToFile(Cisuc cisuc){
         try{
             /*File fPessoa = new File(pessoaPath);*/
-            FileOutputStream fileOut = new FileOutputStream(pessoaPath);
+            FileOutputStream fileOut = new FileOutputStream(objPath);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(pessoas);
-            objectOut.close();
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
-    }
+            objectOut.writeObject(cisuc.listaPessoas);
+            objectOut.writeObject(cisuc.listaProjeto);
 
-    public static void WriteProjetoToFile(ArrayList<Projeto> projetos){
-        try{
-            File fProj = new File(projPath);
-            FileOutputStream fileOut = new FileOutputStream(fProj);
-            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(projetos);
             objectOut.close();
         }catch(Exception ex){
             ex.printStackTrace();
@@ -31,41 +19,45 @@ public class Ficheiro {
     }
 
     public ArrayList<Pessoa> ReadPessoaFromFile(){
+        ArrayList<Pessoa> pessoas = new ArrayList<>();
+        ArrayList<Projeto> projetos = new ArrayList<>();
         try{
-            FileInputStream fileIn = new FileInputStream(pessoaPath);
+            FileInputStream fileIn = new FileInputStream(objPath);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
-            ArrayList<Pessoa> pessoas = (ArrayList<Pessoa>) objectIn.readObject();
+            pessoas = (ArrayList<Pessoa>) objectIn.readObject();
+            projetos = (ArrayList<Projeto>) objectIn.readObject();
             objectIn.close();
             return pessoas;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            return null;
+            return pessoas;
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
+            return pessoas;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            return null;
+            return pessoas;
         }
     }
     public ArrayList<Projeto> ReadProjFromFile(){
+        ArrayList<Projeto> projetos = new ArrayList<>();
         try{
             FileInputStream fileIn = new FileInputStream(projPath);
             ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
-            ArrayList<Projeto> projetos = (ArrayList<Projeto>) objectIn.readObject();
+            projetos = (ArrayList<Projeto>) objectIn.readObject();
             objectIn.close();
             return projetos;
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            return null;
+            return projetos;
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
+            return projetos;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-            return null;
+            return projetos;
         }
     }
 }

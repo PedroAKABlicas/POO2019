@@ -2,7 +2,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Pessoa implements Serializable {
-    private String user=null, email=null;
+    private static final long serialVersionUID =6529685098267757690L;
+    private String user, email;
     private ArrayList<Tarefa> tarefas;
 
     public Pessoa(String user, String email){

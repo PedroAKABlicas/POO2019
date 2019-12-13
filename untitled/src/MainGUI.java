@@ -4,16 +4,19 @@ import java.awt.event.ActionListener;
 
 public class MainGUI extends JFrame {
 
-    protected JButton btnCriaProjeto, btnAlterarProjeto, btnVerAtraso, btnVerConcluido, btnAddPessoa;
+    protected JButton btnCriaProjeto, btnVerProjeto, btnVerAtraso, btnVerConcluido, btnAddPessoa;
     public Cisuc cisuc;
 
     public MainGUI(Cisuc cisuc) {
         this.cisuc = cisuc;
+        for(Projeto projeto : cisuc.listaProjeto){
+            System.out.println(projeto.getEquipa()+ " "+projeto.getNome());
+        }
         setLayout(null);
         btnCriaProjeto = new JButton("Criar Projeto");
         btnCriaProjeto.setBounds(55, 40, 300, 25);
-        btnAlterarProjeto = new JButton("Alterar Projeto");
-        btnAlterarProjeto.setBounds(55, 80, 300, 25);
+        btnVerProjeto = new JButton("Alterar Projeto");
+        btnVerProjeto.setBounds(55, 80, 300, 25);
         btnVerAtraso = new JButton("Ver Projetos Atrasados");
         btnVerAtraso.setBounds(55, 120, 300, 25);
         btnVerConcluido = new JButton("Ver Projetos Concluidos");
@@ -41,7 +44,13 @@ public class MainGUI extends JFrame {
                 btnVerAtrasoActionListener();
             }
         });
-        add(btnAlterarProjeto);
+        btnVerProjeto.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnVerProjetoActionListener();
+            }
+        });
+        add(btnVerProjeto);
         add(btnCriaProjeto);
         add(btnVerAtraso);
         add(btnVerConcluido);
@@ -52,7 +61,7 @@ public class MainGUI extends JFrame {
     private void btnCriaProjetoActionListener() {
         NovoProjetoGUI n = new NovoProjetoGUI(this);
         n.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        n.setSize(450,250);
+        n.setSize(450,340);
         n.setVisible(true);
         this.setVisible(false);
     }
@@ -69,6 +78,14 @@ public class MainGUI extends JFrame {
         atraso.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         atraso.setSize(500,300);
         atraso.setVisible(true);
+        this.setVisible(false);
+    }
+
+    private void btnVerProjetoActionListener(){
+        VerProjetoGUI projetos = new VerProjetoGUI(this);
+        projetos.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        projetos.setSize(500,300);
+        projetos.setVisible(true);
         this.setVisible(false);
     }
 }
