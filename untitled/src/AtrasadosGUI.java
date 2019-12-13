@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -6,8 +8,13 @@ import java.util.ArrayList;
 public class AtrasadosGUI extends JFrame {
     public JLabel lblTitulo;
     public JList listProjeto;
+    private JButton btnVoltar;
+    MainGUI menu;
     private DefaultListModel<String> listModel = new DefaultListModel<>();
     public AtrasadosGUI(MainGUI menu){
+        this.menu=menu;
+        //btnVoltar = new JButton("Voltar");
+        //btnVoltar.setBounds(130, 200, 20, 20);
         lblTitulo = new JLabel("Projetos atrasados.");
         lblTitulo.setBounds(150,40,130,20);
         listProjeto = new JList();
@@ -23,5 +30,19 @@ public class AtrasadosGUI extends JFrame {
         listProjeto.setModel(listModel);
         add(lblTitulo);
         add(listProjeto);
+        //add(btnVoltar);
+        /*btnVoltar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnVoltarActionListener();
+            }
+        });*/
+    }
+
+    private void btnVoltarActionListener(){
+        MainGUI menu = new MainGUI(this.menu.cisuc);
+        menu.setSize(420, 300);
+        menu.setVisible(true);
+        this.setVisible(false);
     }
 }

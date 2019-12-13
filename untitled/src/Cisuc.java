@@ -10,15 +10,8 @@ public class Cisuc{
     public ArrayList<Pessoa> listaPessoas;
     public ArrayList<Projeto> listaProjeto;
 
-
-    public Cisuc(){
-        Ficheiro projs = new Ficheiro();
-        //Ficheiro peepz = new Ficheiro();
-        try{
-            listaProjeto=projs.ReadProjFromFile();
-            //listaPessoas=peepz.ReadPessoaFromFile();
-        }catch(Exception e){
-            e.printStackTrace();
-        }
+    public Cisuc(ArrayList<Pessoa> listaP, ArrayList<Projeto> lista){
+        this.listaProjeto=lista;
+        this.listaPessoas=listaP;
     }
 }

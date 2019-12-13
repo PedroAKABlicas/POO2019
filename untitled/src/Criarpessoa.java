@@ -9,17 +9,31 @@ import java.util.*;
 public class Criarpessoa extends JFrame{
     protected JButton btnAddPessoa, btnVoltar;
     protected JLabel lblCargo,lblOrientador,lblMail,lblNome;
-    String[] cargoStrings = { "Docente", "Licenciatura", "Mestrado", "Doutoramento" };
-    protected JComboBox cargo,orientador;
+    private String[] cargoStrings = { "Docente", "Licenciatura", "Mestrado", "Doutoramento" };
+    protected JComboBox cargo, orientador;
     protected JTextField txtNome, txtMail;
+    private ArrayList<Pessoa> docs = new ArrayList<>();
     MainGUI menu;
     public Criarpessoa (MainGUI menu){
-        setLayout(null);
         this.menu=menu;
+        if(menu.cisuc.listaPessoas!=null){
+            for(Pessoa pessoa : menu.cisuc.listaPessoas){
+                if(pessoa.getTipo().equals("Docente")){
+                    docs.add(pessoa);
+                }
+            }
+        }
+        String[] aux = new String[docs.size()];
+        for(int i=0; i<docs.size(); i++){
+            aux[i]=docs.get(i).getUser();
+        }
+        orientador = new JComboBox(aux);
+        setLayout(null);
         lblCargo = new JLabel("Cargo");
         lblCargo.setBounds(50,25, 200,30);
         cargo = new JComboBox(cargoStrings);
         cargo.setBounds(125,30,200,20);
+        cargo.setSelectedIndex(0);
         lblOrientador = new JLabel("Test");
         lblOrientador.setText("Orientador:");
         lblOrientador.setBounds(50,67, 200,30);
@@ -70,15 +84,29 @@ public class Criarpessoa extends JFrame{
 
     private void btnAddPessoaActionListener(){
         int carg = cargo.getSelectedIndex();
+        String nome;
         switch(carg){
             case 0:
                 Pessoa doc = new Docente(txtNome.getText(), txtMail.getText(), 0, null);
+                menu.cisuc.listaPessoas.add(doc);
                 break;
             case 1:
-                Pessoa lic = new Licenciado(txtNome.getText(), txtMail.getText(), )
+                nome = orientador.getSelectedItem().toString();
+                Pessoa lic = new Licenciado(txtNome.getText(), txtMail.getText(), null, null, getOrientador(nome));
+                menu.cisuc.listaPessoas.add(lic);
+                break;
+            case 2:
+                nome = orientador.getSelectedItem().toString();
+                Pessoa mestre = new Mestre(txtNome.getText(), txtMail.getText(), null, null, getOrientador(nome));
+                menu.cisuc.listaPessoas.add(mestre);
+                break;
+            case 3:
+                nome = orientador.getSelectedItem().toString();
+                Pessoa dout = new Doutorado(txtNome.getText(), txtMail.getText(), null, null);
+                menu.cisuc.listaPessoas.add(dout);
+                break;
         }
-        String role = cargoStrings[carg];
-
+        guardaPessoas(menu.cisuc.listaPessoas);
     }
 
 
@@ -94,6 +122,21 @@ public class Criarpessoa extends JFrame{
         if ((carg) ==0 || carg==3) {
             orientador.disable();
         }
+    }
+
+    private Pessoa getOrientador(String nome){
+        for(Pessoa pessoa : menu.cisuc.listaPessoas){
+            if(nome.equals(pessoa.getUser())){
+                return pessoa;
+            }
+        }
+
+        return null;
+    }
+
+    private void guardaPessoas(ArrayList<Pessoa> pessoas){
+        Ficheiro ficheiro = new Ficheiro();
+        ficheiro.WritePessoaToFile(pessoas);
     }
 }
 

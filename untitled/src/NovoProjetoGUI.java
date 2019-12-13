@@ -65,7 +65,8 @@ public class NovoProjetoGUI extends JFrame {
             proj = new Projeto(txtNome.getText(), txtAcronimo.getText(), dataI, dataF, Integer.parseInt(txtDuracao.getText()));
             menu.cisuc.listaProjeto.add(proj);
             Ficheiro ficheiro = new Ficheiro();
-            ficheiro.WriteProjetoToFile(projetos);
+            ficheiro.WriteProjetoToFile(menu.cisuc.listaProjeto);
+            JOptionPane.showMessageDialog(null,"Projeto criado com sucesso.");
         });
         btnVoltar.addActionListener(new ActionListener() {
             @Override
