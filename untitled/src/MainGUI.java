@@ -68,7 +68,7 @@ public class MainGUI extends JFrame {
     private void btnAddPessoaActionListener() {
         Criarpessoa nova = new Criarpessoa(this);
         nova.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        nova.setSize(450,350);
+        nova.setSize(450,520);
         nova.setVisible(true);
         this.setVisible(false);
     }

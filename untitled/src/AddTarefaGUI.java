@@ -8,9 +8,11 @@ public class AddTarefaGUI extends JFrame {
     private JButton btnVoltar;
     private String[] tipoStrings = { "Desenvolvimento","Design","Documentação"};
     private JComboBox comboPessoa, comboTipo;
-    MainGUI menu;
-    public AddTarefaGUI(MainGUI mainGUI){
-        this.menu=menu;
+    VerProjetoGUI proj;
+    int index;
+    public AddTarefaGUI(VerProjetoGUI proj, int index){
+        this.proj=proj;
+        this.index=index;
         setLayout(null);
         lblDataI = new JLabel("Data de Inicio:");
         lblDataI.setBounds(25,25, 100,30);
@@ -55,9 +57,9 @@ public class AddTarefaGUI extends JFrame {
 
 
     private void btnVoltarActionListener(){
-        MainGUI menu = new MainGUI(this.menu.cisuc);
-        menu.setSize(420, 300);
-        menu.setVisible(true);
+        VerProjetoGUI proj = new VerProjetoGUI(this.proj.menu);
+        proj.setSize(500, 300);
+        proj.setVisible(true);
         this.setVisible(false);
     }
 }

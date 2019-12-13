@@ -57,6 +57,12 @@ public class VerProjetoGUI extends JFrame {
                 comboProjActionListener(e);
             }
         });
+        btnConsTarefa.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                btnConsTarefaActionListener();
+            }
+        });
         add(lblAddPessoa);
         add(lblProj);
         add(comboPessoa);
@@ -98,6 +104,13 @@ public class VerProjetoGUI extends JFrame {
         Ficheiro ficheiro = new Ficheiro();
         ficheiro.WriteToFile(menu.cisuc);
         AtualizaPeepz(index);
+    }
+
+    private void btnConsTarefaActionListener(){
+        AddTarefaGUI tarefa = new AddTarefaGUI(this, comboProj.getSelectedIndex());
+        tarefa.setSize(600, 400);
+        tarefa.setVisible(true);
+        this.setVisible(false);
     }
 
     private void comboProjActionListener(ActionEvent e){
