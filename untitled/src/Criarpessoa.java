@@ -8,10 +8,10 @@ import java.util.*;
 
 public class Criarpessoa extends JFrame{
     protected JButton btnAddPessoa, btnVoltar;
-    protected JLabel lblCargo,lblOrientador,lblMail,lblNome;
     private String[] cargoStrings = { "Docente", "Licenciatura", "Mestrado", "Doutoramento" };
     protected JComboBox cargo, orientador;
-    protected JTextField txtNome, txtMail;
+    protected JLabel lblCargo,lblOrientador,lblMail,lblNome,lblNumero,lblDataI,lblDataF;
+    protected JTextField txtNome, txtMail,txtNumero,txtDataI,txtDataF;
     private String[] aux;
     protected DefaultComboBoxModel modelDoc;
     private ArrayList<Pessoa> docs = new ArrayList<>();
@@ -24,11 +24,10 @@ public class Criarpessoa extends JFrame{
         cargo = new JComboBox(cargoStrings);
         cargo.setBounds(125,30,200,20);
         cargo.setSelectedIndex(0);
-        lblOrientador = new JLabel("Test");
-        lblOrientador.setText("Orientador:");
+        lblOrientador = new JLabel("Orientador");
         lblOrientador.setBounds(50,67, 200,30);
-        orientador = new JComboBox(AtualizaDoc());
-        orientador.setBounds(125,71,200,20);
+        /*orientador = new JComboBox(AtualizaDoc());
+        orientador.setBounds(125,71,200,20);*/
         txtMail= new JTextField();
         txtMail.setBounds(125,110,200,25);
         lblMail = new JLabel("Mail:");
@@ -38,19 +37,37 @@ public class Criarpessoa extends JFrame{
         lblNome = new JLabel("Nome:");
         lblNome.setBounds(50,146, 200,30);
         btnAddPessoa = new JButton("Registar Pessoa");
-        btnAddPessoa.setBounds(55, 200, 300, 25);
+        btnAddPessoa.setBounds(55, 350, 300, 25);
         btnVoltar = new JButton("Back");
-        btnVoltar.setBounds(55, 240, 300, 25);
+        btnVoltar.setBounds(55, 390, 300, 25);
         add(btnAddPessoa);
         add(lblCargo);
         add(txtNome);
         add(lblOrientador);
         add(lblMail);
-        add(orientador);
+        /*add(orientador);*/
         add(cargo);
         add(lblNome);
         add(txtMail);
         add(btnVoltar);
+        lblDataI = new JLabel("Data de Inicio de Bolsa:");
+        lblDataI.setBounds(50,200, 200,30);
+        txtDataI= new JTextField();
+        txtDataI.setBounds(205,203,150,25);
+        lblDataF = new JLabel("Data de Fim de Bolsa:");
+        lblDataF.setBounds(50,250, 200,30);
+        txtDataF= new JTextField();
+        txtDataF.setBounds(205,253,150,25);
+        lblNumero = new JLabel("Numero Mecanografico");
+        lblNumero.setBounds(50,300, 200,30);
+        txtNumero= new JTextField();
+        txtNumero.setBounds(205,303,150,25);
+        add(lblDataF);
+        add(lblDataI);
+        add(txtDataF);
+        add(txtDataI);
+        add(txtNumero);
+        add(lblNumero);
         btnVoltar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -64,15 +81,15 @@ public class Criarpessoa extends JFrame{
             }
         });
 
-        btnAddPessoa.addActionListener(new ActionListener() {
+         /*btnAddPessoa.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 btnAddPessoaActionListener();
             }
-        });
+        });*/
     }
 
-    private void btnAddPessoaActionListener(){
+   /*private void btnAddPessoaActionListener(){
         int carg = cargo.getSelectedIndex();
         String nome;
         switch(carg){
@@ -102,7 +119,7 @@ public class Criarpessoa extends JFrame{
         }
         guardaPessoas(menu.cisuc.listaPessoas);
         JOptionPane.showMessageDialog(null, "Pessoa Registada!");
-    }
+    }*/
 
 
     private void btnVoltarActionListener(){
@@ -121,7 +138,7 @@ public class Criarpessoa extends JFrame{
         }
     }
 
-    private Pessoa getOrientador(String nome){
+    /*private Pessoa getOrientador(String nome){
         for(Pessoa pessoa : menu.cisuc.listaPessoas){
             if(nome.equals(pessoa.getUser())){
                 return pessoa;
@@ -152,6 +169,6 @@ public class Criarpessoa extends JFrame{
     private void guardaFile(ArrayList<Pessoa> lista){
         Ficheiro ficheiro = new Ficheiro();
         ficheiro.WritePessoaToFile(lista);
-    }
+    }*/
 }
 
